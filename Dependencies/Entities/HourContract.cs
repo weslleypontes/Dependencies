@@ -26,7 +26,7 @@ namespace Dependencies.Entities
         // e vai retornar um valor double
         public double TotalValue()
         {
-            return Hours * ValuePerHour;
+            return Hours * ValuePerHour;f
         }
     }
 }
