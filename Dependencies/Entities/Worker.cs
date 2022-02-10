@@ -28,7 +28,7 @@ namespace Dependencies.Entities
 
         }
 
-        //vou criar ums contrutor com algumantos 
+        //vou criar ums contrutor com argumentos 
         //ATENÇÃO; eu noa vou inculir as associacoes para muitos 
         // no caso os contratos.
         // não é usual voce passar uma lista instanciado no contrutor de uma objeto 
@@ -41,6 +41,41 @@ namespace Dependencies.Entities
             Department = department;
         }
         
+        //criar um metodo para receber um argumento que vai adicionar na lista Contract
+        public void AddContract(HourContract contract)
+        {
+            //minha lista Contract eu vou chamar nela o metodo Add, e adicionar o meu argumento contract
+            Contracts.Add(contract);
+        }
+
+        //agora criar uma metodo para remover cantratos 
+        public void RenoveContract(HourContract contract)
+        {
+            //operaçao para remover usando o Remove
+            Contracts.Remove(contract);
+        }
+
+        //agora criar uma metodo para saber quanto o funcionaria ganhou em uma dado ano e um dado mes
+
+        public double Income(int year, int month)
+        {
+            // iniciar uma varialvel soma que vai receber em primeiro lufar o salario base 
+            double sum = BaseSalary;
+            //para percorrer a minha lista crirar um foreach 
+            // para cada HourCantract contract na minha lista de Contracts  
+            foreach(HourContract contract in Contracts)
+            {
+                // vou criar uma if para comparar se os contratos(ano e mes) da minha lista
+                // são iguais as dados que chera por parametros 
+                if (contract.Date.Year == year && contract.Date.Month == month)
+                {
+                    //agora eu vou fazer a soma receber ela msm mais o total dos contratos
+                    //eu ja tenho uma operação que calcula o valor do cotrato 
+                    sum += contract.TotalValue();
+                }
+            }
+            return sum; 
+        }
 
 
     }
